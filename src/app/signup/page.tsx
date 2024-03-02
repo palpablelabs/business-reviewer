@@ -23,11 +23,8 @@ export default function Signup() {
   const [isAgreementChecked, setIsAgreementChecked] = useState(false);
   const [passwordStrength, setPasswordStrength] = useState("");
   const [isPasswordMatched, setIsPasswordMatched] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
-  /**
-   *
-   * @param e
-   */
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
@@ -36,11 +33,14 @@ export default function Signup() {
       fname,
       lname,
       password,
+      confirmPassword,
       isAgreementChecked,
+      passwordStrength,
+      isPasswordMatched,
     });
-    // Add your logic here for handling the form data, such as making an API call.
-    if (passwordStrength === PasswordStrength.Strong) {
-      console.log("Allow");
+
+    if (passwordStrength === PasswordStrength.Strong && isPasswordMatched) {
+      console.log("Allow SIGNUP");
     }
   };
 
@@ -59,6 +59,8 @@ export default function Signup() {
     setIsPasswordMatched(confirmPassword === password);
   };
 
+  const togglePasswordVisibility = () => setShowPassword(!showPassword);
+
   const checkPasswordStrength = (value: PasswordStrength) => {
     const strongRegex =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
@@ -75,7 +77,10 @@ export default function Signup() {
 
   return (
     <Card color="transparent" shadow={false}>
-      <Typography variant="h4" color="blue-gray">
+      <Typography
+        color="blue-gray"
+        className="flex items-center justify-center font-bold sm:text-sm md:text-3xl lg:text-3xl"
+      >
         Create a free account to manage your page
       </Typography>
       <form className="mt-8 mb-2" onSubmit={handleSubmit}>
@@ -110,9 +115,10 @@ export default function Signup() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+
           <Input
             label="Password"
-            type="password"
+            type={showPassword ? "text" : "password"}
             autoComplete="off"
             required
             size="lg"
@@ -121,7 +127,19 @@ export default function Signup() {
             value={password}
             onChange={handlePasswordChange}
           />
-          {passwordStrength !== "" && (
+
+          {password && (
+            <Button size="sm" onClick={togglePasswordVisibility}>
+              {!showPassword ? "Show Password" : "Hide Password"}
+            </Button>
+          )}
+
+          <Typography variant="small" className="blue-grey">
+            Use at least 8 characters, one lowercase(a-z), one uppercase(A-Z),
+            one number(0-9) and one special character(@$!%*?&)
+          </Typography>
+
+          {password && passwordStrength !== "" && (
             <Typography variant="small" color="blue-gray">
               Password Strength :<label> </label>
               {passwordStrength === PasswordStrength.Strong && (
@@ -143,7 +161,7 @@ export default function Signup() {
           )}
           <Input
             label="Confirm Password"
-            type="password"
+            type={showPassword ? "text" : "password"}
             autoComplete="off"
             required
             size="lg"
