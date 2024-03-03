@@ -3,13 +3,15 @@
 import React from "react";
 import {
   Navbar,
-  MobileNav,
   Typography,
   Button,
   IconButton,
+  Collapse,
 } from "@material-tailwind/react";
+import { useRouter } from "next/navigation";
 
 export default function StickyNavBar() {
+  const router = useRouter();
   const [openNav, setOpenNav] = React.useState(false);
 
   React.useEffect(() => {
@@ -19,12 +21,29 @@ export default function StickyNavBar() {
     );
   }, []);
 
+  const handleSignup = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    setOpenNav(false);
+    router.push("/signup");
+  };
+
+  const handleLogin = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    setOpenNav(false);
+    router.push("/login");
+  };
+
+  const handleHome = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    setOpenNav(false);
+    router.push("/");
+  };
+
   return (
     <Navbar className="sticky top-0 z-10 h-max max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-4">
       <div className="flex items-center justify-between text-blue-gray-900">
         <Typography
-          as="a"
-          href="#"
+          onClick={handleHome}
           className="mr-4 cursor-pointer py-1.5 font-medium"
         >
           Business Reviewer
@@ -32,13 +51,16 @@ export default function StickyNavBar() {
 
         <div className="flex items-center gap-4">
           <Button
+            onClick={handleLogin}
             variant="gradient"
             size="sm"
             className="hidden lg:inline-block"
           >
             <span>Log In</span>
           </Button>
+
           <Button
+            onClick={handleSignup}
             variant="gradient"
             size="sm"
             className="hidden lg:inline-block"
@@ -84,16 +106,29 @@ export default function StickyNavBar() {
           )}
         </IconButton>
       </div>
-      <MobileNav open={openNav}>
+      <Collapse open={openNav}>
         <div className="flex items-center m-4 gap-4">
-          <Button fullWidth variant="gradient" size="sm" className="">
+          <Button
+            onClick={handleLogin}
+            fullWidth
+            variant="gradient"
+            size="sm"
+            className=""
+          >
             <span>Log In</span>
           </Button>
-          <Button fullWidth variant="gradient" size="sm" className="">
-            <span>Sign in</span>
+
+          <Button
+            onClick={handleSignup}
+            fullWidth
+            variant="gradient"
+            size="sm"
+            className=""
+          >
+            <span>Sign Up</span>
           </Button>
         </div>
-      </MobileNav>
+      </Collapse>
     </Navbar>
   );
 }

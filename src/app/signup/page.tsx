@@ -8,8 +8,11 @@ import {
   Button,
   Typography,
 } from "@material-tailwind/react";
+import { useRouter } from "next/navigation";
 
 export default function Signup() {
+  const router = useRouter();
+
   enum PasswordStrength {
     Weak = "Weak",
     Medium = "Medium",
@@ -42,6 +45,11 @@ export default function Signup() {
     if (passwordStrength === PasswordStrength.Strong && isPasswordMatched) {
       console.log("Allow SIGNUP");
     }
+  };
+
+  const handleLogin = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    router.push("/login");
   };
 
   const handleAgreementChecked = () =>
@@ -187,15 +195,7 @@ export default function Signup() {
                 color="gray"
                 className="flex items-center font-normal"
               >
-                I agree with the
-                <Typography
-                  as="a"
-                  href="#terms"
-                  color="blue"
-                  className="font-medium transition-colors hover:text-blue-700"
-                >
-                  &nbsp;terms and conditions
-                </Typography>
+                I agree with the terms and conditions
               </Typography>
             }
             containerProps={{ className: "-ml-2.5" }}
@@ -212,14 +212,13 @@ export default function Signup() {
 
         <Typography color="gray" className="mt-4 text-center font-normal">
           Already have an account?
-          <Typography
-            as="a"
-            href="#login"
-            color="blue"
-            className="font-medium transition-colors hover:text-blue-700"
-          >
-            &nbsp;Log In
-          </Typography>
+        </Typography>
+        <Typography
+          onClick={handleLogin}
+          color="blue"
+          className="font-medium transition-colors hover:text-blue-700 flex items-center justify-center cursor-pointer"
+        >
+          Log In
         </Typography>
       </form>
     </Card>
