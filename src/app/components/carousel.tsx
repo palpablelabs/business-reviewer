@@ -10,7 +10,11 @@ interface CarouselCustomNavigationComponentProps {
 const CarouselComponent: React.FC<CarouselCustomNavigationComponentProps> = ({
   children,
 }) => {
-  return <Carousel className="rounded-xl">{children}</Carousel>;
+  return (
+    <Carousel loop={true} autoplay={true}>
+      {children}
+    </Carousel>
+  );
 };
 
 export default CarouselComponent;
