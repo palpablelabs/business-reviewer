@@ -46,7 +46,7 @@ const PricingCard: React.FC<PricingCardProps> = ({
   benefits,
 }) => {
   return (
-    <Card color="gray" variant="gradient" className="w-full max-w-[20rem] p-8">
+    <Card color="gray" variant="gradient" className="w-full p-8 mb-5">
       <CardHeader
         floated={false}
         shadow={false}
