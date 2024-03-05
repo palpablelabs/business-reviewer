@@ -5,13 +5,24 @@ import { Carousel } from "@material-tailwind/react";
 
 interface CarouselCustomNavigationComponentProps {
   children: ReactNode;
+  loop: boolean;
+  autoplay: boolean;
+  autoplayDelay: number;
 }
 
 const CarouselComponent: React.FC<CarouselCustomNavigationComponentProps> = ({
   children,
+  loop,
+  autoplay,
+  autoplayDelay,
 }) => {
   return (
-    <Carousel loop={true} autoplay={true} autoplayDelay={5000}>
+    <Carousel
+      className="h-full bg-black"
+      loop={loop}
+      autoplay={autoplay}
+      autoplayDelay={autoplayDelay}
+    >
       {children}
     </Carousel>
   );
