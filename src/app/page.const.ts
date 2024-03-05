@@ -194,9 +194,46 @@ const heroComponentPropsList = [
     },
   },
 ];
+
+const cardPropsList = [
+  {
+    image: {
+      src: "/home/cards/card_1.png",
+      alt: "Buisness Image",
+      width: 300,
+      height: 300,
+      priority: false,
+    },
+    content: {
+      header: "A reserch on Small Businesses concluded",
+      subHeading:
+        "More than 90% customers consider online reviews, including Google reviews, before deciding to visit or make a purchase from a small business.",
+      body: [
+        {
+          bulletPoint: "Trust and Credibility",
+          description:
+            "Positive reviews build trust and credibility for a small business. Potential customers often rely on the experiences of others to gauge the reliability and quality of a product or service.",
+        },
+        {
+          bulletPoint: "Social Proof",
+          description:
+            "Online reviews serve as a form of social proof. When people see that others have had positive experiences with a business, it validates their decision to consider that business for their needs.",
+        },
+        {
+          bulletPoint: "Decision-Making Influence",
+          description:
+            "Consumers often use online reviews as a critical factor in their decision-making process. Reviews provide insights into the strengths and weaknesses of a business, helping customers make informed choices.",
+        },
+      ],
+      button: { text: "Register Your Business", link: "/signup" },
+    },
+  },
+];
+
 const pageProps = {
   heros: heroComponentPropsList,
   testimonials: testimonialPropsList,
+  cards: cardPropsList,
 };
 
 export default pageProps;

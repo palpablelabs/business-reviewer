@@ -4,7 +4,7 @@ export default function SignupLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <section className="flex items-center justify-center mt-8 p-5">
+    <section className="flex items-center justify-center mt-5 p-5">
       {children}
     </section>
   );

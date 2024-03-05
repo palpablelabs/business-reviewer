@@ -7,9 +7,10 @@ import CarouselComponent from "./components/carousel";
 import pageProps from "./page.const";
 import HeroTextComponent from "./components/heroText";
 import TestimonialCard from "./components/testimonial";
+import HorizontalCard from "./components/horizontalCard";
 
 export default function Home() {
-  const { heros, testimonials } = pageProps;
+  const { heros, testimonials, cards } = pageProps;
   return (
     <>
       <CarouselComponent loop={true} autoplay={true} autoplayDelay={5000}>
@@ -26,6 +27,13 @@ export default function Home() {
           </div>
         ))}
       </CarouselComponent>
+
+      {cards.map((item, index) => (
+        <div key={index} className="h-full w-full">
+          <HorizontalCard image={item.image} content={item.content} />
+        </div>
+      ))}
+
       <CarouselComponent loop={true} autoplay={true} autoplayDelay={5000}>
         {testimonials.map((item, index) => (
           <div key={index} className="h-full w-full">

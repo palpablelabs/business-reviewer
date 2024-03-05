@@ -206,7 +206,7 @@ export default function Signup() {
           />
         </div>
 
-        <Button type="submit" className="mt-6" fullWidth>
+        <Button type="submit" className="mt-6" color="blue" fullWidth>
           sign up
         </Button>
 

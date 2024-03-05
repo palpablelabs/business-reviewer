@@ -55,6 +55,7 @@ export default function StickyNavBar() {
             variant="gradient"
             size="sm"
             className="hidden lg:inline-block"
+            color="blue"
           >
             <span>Log In</span>
           </Button>
@@ -64,6 +65,7 @@ export default function StickyNavBar() {
             variant="gradient"
             size="sm"
             className="hidden lg:inline-block"
+            color="blue"
           >
             <span>Sign Up</span>
           </Button>
@@ -114,6 +116,7 @@ export default function StickyNavBar() {
             variant="gradient"
             size="sm"
             className=""
+            color="blue"
           >
             <span>Log In</span>
           </Button>
@@ -124,6 +127,7 @@ export default function StickyNavBar() {
             variant="gradient"
             size="sm"
             className=""
+            color="blue"
           >
             <span>Sign Up</span>
           </Button>

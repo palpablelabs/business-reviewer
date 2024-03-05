@@ -102,7 +102,7 @@ export default function Login() {
           />
         </div>
 
-        <Button type="submit" className="mt-6" fullWidth>
+        <Button type="submit" className="mt-6" color="blue" fullWidth>
           log in
         </Button>
 
