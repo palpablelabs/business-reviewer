@@ -262,7 +262,7 @@ const cardPropsList = [
             "Capitalize on the discount mechanism to foster loyalty and drive repeat business to your shop. Witness a surge in market share as satisfied customers return, establishing a robust and lasting presence in your industry.",
         },
       ],
-      button: { text: "Explore the plan", link: "/plan" },
+      button: { text: "Explore the plan", link: "/plans" },
     },
   },
 ];

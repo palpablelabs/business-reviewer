@@ -8,6 +8,7 @@ import pageProps from "./page.const";
 import HeroTextComponent from "./components/heroText";
 import TestimonialCard from "./components/testimonial";
 import HorizontalCard from "./components/horizontalCard";
+import PricingCard from "./components/pricingCard";
 
 export default function Home() {
   const { heros, testimonials, cards } = pageProps;
