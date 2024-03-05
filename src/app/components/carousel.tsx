@@ -11,7 +11,7 @@ const CarouselComponent: React.FC<CarouselCustomNavigationComponentProps> = ({
   children,
 }) => {
   return (
-    <Carousel loop={true} autoplay={true}>
+    <Carousel loop={true} autoplay={true} autoplayDelay={5000}>
       {children}
     </Carousel>
   );

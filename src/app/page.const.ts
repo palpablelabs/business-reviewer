@@ -35,117 +35,109 @@ const extraWideScreenProps = {
   ...heroProps,
 };
 
-const mobile_1 = {
-  ...{
-    src: "/home/mobile_home_1.png",
+const HeroComponentProps = [
+  {
+    header: "Elevate Your Business to Digital Excellence",
+    body: "Boost your online presence, gather authentic reviews, and thrive in the digital era. Join us in elevating your small business to new heights.",
+    mobile: {
+      ...{
+        src: "/home/mobile_home_1.png",
+      },
+      ...mobileProps,
+    },
+    tablet: {
+      ...{
+        src: "/home/tablet_home_1.jpeg",
+      },
+      ...tabletProps,
+    },
+    desktop: {
+      ...{
+        src: "/home/desktop_home_1.png",
+      },
+      ...desktopProps,
+    },
+    widescreen: {
+      ...{
+        src: "/home/widescreen_home_1.png",
+      },
+      ...wideScreenProps,
+    },
+    extra_widescreen: {
+      ...{
+        src: "/home/extra_widescreen_home_1.png",
+      },
+      ...extraWideScreenProps,
+    },
   },
-  ...mobileProps,
-};
-const mobile_2 = {
-  ...{
-    src: "/home/mobile_home_2.png",
+  {
+    header: "Revolutionize Your Small Business Digitally",
+    body: "Revolutionize your digital journey. Amplify your presence, collect genuine reviews, and embrace the future with our tailored solutions.",
+    mobile: {
+      ...{
+        src: "/home/mobile_home_2.png",
+      },
+      ...mobileProps,
+    },
+    tablet: {
+      ...{
+        src: "/home/tablet_home_2.png",
+      },
+      ...tabletProps,
+    },
+    desktop: {
+      ...{
+        src: "/home/desktop_home_2.png",
+      },
+      ...desktopProps,
+    },
+    widescreen: {
+      ...{
+        src: "/home/widescreen_home_2.png",
+      },
+      ...wideScreenProps,
+    },
+    extra_widescreen: {
+      ...{
+        src: "/home/extra_widescreen_home_2.png",
+      },
+      ...extraWideScreenProps,
+    },
   },
-  ...mobileProps,
-};
-const mobile_3 = {
-  ...{
-    src: "/home/mobile_home_3.png",
+  {
+    header: "Enhance Your Business, Ignite Digital Growth",
+    body: "Ignite your online reputation. Unleash the power of reviews and digital success. Join us in revolutionizing the way small businesses grow.",
+    mobile: {
+      ...{
+        src: "/home/mobile_home_3.png",
+      },
+      ...mobileProps,
+    },
+    tablet: {
+      ...{
+        src: "/home/tablet_home_3.png",
+      },
+      ...tabletProps,
+    },
+    desktop: {
+      ...{
+        src: "/home/desktop_home_3.png",
+      },
+      ...desktopProps,
+    },
+    widescreen: {
+      ...{
+        src: "/home/widescreen_home_3.png",
+      },
+      ...wideScreenProps,
+    },
+    extra_widescreen: {
+      ...{
+        src: "/home/extra_widescreen_home_3.png",
+      },
+      ...extraWideScreenProps,
+    },
   },
-  ...mobileProps,
-};
+];
 
-const tablet_1 = {
-  ...{
-    src: "/home/tablet_home_1.jpeg",
-  },
-  ...tabletProps,
-};
-const tablet_2 = {
-  ...{
-    src: "/home/tablet_home_2.png",
-  },
-  ...tabletProps,
-};
-const tablet_3 = {
-  ...{
-    src: "/home/tablet_home_3.png",
-  },
-  ...tabletProps,
-};
-
-const desktop_1 = {
-  ...{
-    src: "/home/desktop_home_1.png",
-  },
-  ...desktopProps,
-};
-const desktop_2 = {
-  ...{
-    src: "/home/desktop_home_2.png",
-  },
-  ...desktopProps,
-};
-const desktop_3 = {
-  ...{
-    src: "/home/desktop_home_3.png",
-  },
-  ...desktopProps,
-};
-
-const widescreen_1 = {
-  ...{
-    src: "/home/widescreen_home_1.png",
-  },
-  ...wideScreenProps,
-};
-const widescreen_2 = {
-  ...{
-    src: "/home/widescreen_home_2.png",
-  },
-  ...wideScreenProps,
-};
-const widescreen_3 = {
-  ...{
-    src: "/home/widescreen_home_3.png",
-  },
-  ...wideScreenProps,
-};
-
-const extra_widescreen_1 = {
-  ...{
-    src: "/home/extra_widescreen_home_1.png",
-  },
-  ...extraWideScreenProps,
-};
-const extra_widescreen_2 = {
-  ...{
-    src: "/home/extra_widescreen_home_2.png",
-  },
-  ...extraWideScreenProps,
-};
-const extra_widescreen_3 = {
-  ...{
-    src: "/home/extra_widescreen_home_3.png",
-  },
-  ...extraWideScreenProps,
-};
-
-const PageConst = {
-  mobile_1,
-  mobile_2,
-  mobile_3,
-  tablet_1,
-  tablet_2,
-  tablet_3,
-  desktop_1,
-  desktop_2,
-  desktop_3,
-  widescreen_1,
-  widescreen_2,
-  widescreen_3,
-  extra_widescreen_1,
-  extra_widescreen_2,
-  extra_widescreen_3,
-};
-
-export default PageConst;
+export default HeroComponentProps;
