@@ -1,4 +1,4 @@
-const heroProps = { alt: "Business Image", priority: true };
+const heroProps = { alt: "Business Image", priority: false };
 const mobileProps = {
   ...{
     width: 1216,
@@ -199,10 +199,10 @@ const cardPropsList = [
   {
     image: {
       src: "/home/cards/card_1.png",
-      alt: "Buisness Image",
+      alt: "Buisness Image 1",
       width: 300,
       height: 300,
-      priority: false,
+      priority: true,
     },
     content: {
       header: "A reserch on Small Businesses concluded",
@@ -225,7 +225,44 @@ const cardPropsList = [
             "Consumers often use online reviews as a critical factor in their decision-making process. Reviews provide insights into the strengths and weaknesses of a business, helping customers make informed choices.",
         },
       ],
-      button: { text: "Register Your Business", link: "/signup" },
+      button: { text: "Register Your Business for Free", link: "/signup" },
+    },
+  },
+  {
+    image: {
+      src: "/home/cards/card_2.png",
+      alt: "Buisness Image 2",
+      width: 300,
+      height: 300,
+      priority: false,
+    },
+    content: {
+      header: "How we can help your business",
+      subHeading:
+        "Unlock the potential of your business with our seamless signup process, offering a comprehensive suite of features designed to boost your digital presence:",
+      body: [
+        {
+          bulletPoint: "Digital Proofing",
+          description:
+            "Elevate your online visibility by creating a complimentary digital profile for your business. Hence, enabling your customers to discover your business effortlessly in the digital landscape.",
+        },
+        {
+          bulletPoint: "Easy Review Mechanism",
+          description:
+            "Access our user-friendly solution to effortlessly gather reviews for your business on prominent platforms like Google and Meta. Hence, harness the power of positive testimonials from your trusted consumers to build credibility.",
+        },
+        {
+          bulletPoint: "Customer Incentives",
+          description:
+            "Experience our innovative discount functionality, designed to reward users for sharing their feedback. Manage digital discounts seamlessly through our app, offering users compelling reasons to visit your shop.",
+        },
+        {
+          bulletPoint: "Repeat Users",
+          description:
+            "Capitalize on the discount mechanism to foster loyalty and drive repeat business to your shop. Witness a surge in market share as satisfied customers return, establishing a robust and lasting presence in your industry.",
+        },
+      ],
+      button: { text: "Explore the plan", link: "/plan" },
     },
   },
 ];

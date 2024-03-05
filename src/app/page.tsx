@@ -11,8 +11,16 @@ import HorizontalCard from "./components/horizontalCard";
 
 export default function Home() {
   const { heros, testimonials, cards } = pageProps;
+
+  const card1 = cards[0];
+  const card2 = cards[1];
+
   return (
     <>
+      <div className="h-full w-full">
+        <HorizontalCard image={card1.image} content={card1.content} />
+      </div>
+
       <CarouselComponent loop={true} autoplay={true} autoplayDelay={5000}>
         {heros.map((item, index) => (
           <div key={index} className="relative h-full w-full">
@@ -28,15 +36,13 @@ export default function Home() {
         ))}
       </CarouselComponent>
 
-      {cards.map((item, index) => (
-        <div key={index} className="h-full w-full">
-          <HorizontalCard image={item.image} content={item.content} />
-        </div>
-      ))}
+      <div className="h-full w-full">
+        <HorizontalCard image={card2.image} content={card2.content} />
+      </div>
 
       <CarouselComponent loop={true} autoplay={true} autoplayDelay={5000}>
         {testimonials.map((item, index) => (
-          <div key={index} className="h-full w-full">
+          <div key={index} className="h-full w-full pt-2">
             <TestimonialCard
               avatar={item.avatar}
               header={item.header}

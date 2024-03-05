@@ -33,14 +33,17 @@ interface HorizontalCardProps {
 const HorizontalCard: React.FC<HorizontalCardProps> = ({ image, content }) => {
   const router = useRouter();
 
-  const handleButtonClick = (e: { preventDefault: () => void }) => {
+  const handleButtonClick = (
+    e: { preventDefault: () => void },
+    link: string
+  ) => {
     e.preventDefault();
-    router.push("/signup");
+    router.push(link);
   };
   return (
     <>
       <div className="block 2xl:hidden">
-        <Card className="m-0 md:pt-1 w-full flex-column" shadow={false}>
+        <Card className="m-0 w-full flex-column" shadow={false}>
           <CardHeader
             shadow={false}
             floated={false}
@@ -80,12 +83,12 @@ const HorizontalCard: React.FC<HorizontalCardProps> = ({ image, content }) => {
 
             <Button
               type="button"
-              onClick={handleButtonClick}
+              onClick={(e) => handleButtonClick(e, content.button.link)}
               className="w-1/8"
               fullWidth
               color="blue"
             >
-              Register Your Business
+              {content.button.text}
             </Button>
           </CardBody>
         </Card>
@@ -107,7 +110,7 @@ const HorizontalCard: React.FC<HorizontalCardProps> = ({ image, content }) => {
               priority={image.priority}
             />
           </CardHeader>
-          <CardBody className="w-1/2 rounded-none relative">
+          <CardBody className="w-1/2 rounded-none">
             <Typography variant="h6" color="gray" className="mb-4 uppercase">
               {content.header}
             </Typography>
@@ -131,11 +134,12 @@ const HorizontalCard: React.FC<HorizontalCardProps> = ({ image, content }) => {
 
             <Button
               type="button"
-              className="w-1/8 absolute bottom-5"
+              className="w-1/8"
               color="blue"
               fullWidth
+              onClick={(e) => handleButtonClick(e, content.button.link)}
             >
-              Register Your Business
+              {content.button.text}
             </Button>
           </CardBody>
         </Card>

@@ -89,7 +89,7 @@ export default function Signup() {
         color="blue-gray"
         className="flex items-center justify-center font-bold sm:text-sm md:text-3xl lg:text-3xl"
       >
-        Create a free account to manage your page
+        Create a free account to manage your digital business profile
       </Typography>
       <form className="mt-8 mb-2" onSubmit={handleSubmit}>
         <div className="mb-1 flex flex-col gap-6">
