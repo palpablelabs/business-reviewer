@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 import "./globals.css";
-import StickyNavBar from "./components/stickyNavBar";
-import { SimpleFooter } from "./components/footer";
-import PageContainerComponent from "./components/pageContainer";
+import StickyNavBar from "../components/stickyNavBar";
+import { SimpleFooter } from "../components/footer";
+import PageContainerComponent from "../components/pageContainer";
 
 const inter = Inter({ subsets: ["latin"] });
 

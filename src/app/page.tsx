@@ -2,12 +2,12 @@
 
 import React from "react";
 
-import ImageComponent from "./components/imageComponent";
-import CarouselComponent from "./components/carousel";
+import ImageComponent from "../components/imageComponent";
+import CarouselComponent from "../components/carousel";
 import pageProps from "./page.const";
-import HeroTextComponent from "./components/heroText";
-import TestimonialCard from "./components/testimonial";
-import HorizontalCard from "./components/horizontalCard";
+import HeroTextComponent from "../components/heroText";
+import TestimonialCard from "../components/testimonial";
+import HorizontalCard from "../components/horizontalCard";
 
 export default function Home() {
   const { heros, testimonials, cards } = pageProps;

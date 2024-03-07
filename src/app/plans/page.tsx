@@ -3,7 +3,7 @@
 import React from "react";
 import { Typography } from "@material-tailwind/react";
 
-import PricingCard from "../components/pricingCard";
+import PricingCard from "../../components/pricingCard";
 
 export default function Plans() {
   return (
