@@ -8,6 +8,7 @@ import {
   IconButton,
   Collapse,
 } from "@material-tailwind/react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 export default function StickyNavBar() {
@@ -46,7 +47,13 @@ export default function StickyNavBar() {
           onClick={handleHome}
           className="mr-4 cursor-pointer py-1.5 font-medium"
         >
-          Business Reviewer
+          <Image
+            src="/home/credibleCraft.png"
+            alt="credibleCraft"
+            className="object-contain"
+            width={80}
+            height={80}
+          />
         </Typography>
 
         <div className="flex items-center gap-4">

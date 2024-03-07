@@ -51,7 +51,7 @@ export default function Login() {
         color="blue-gray"
         className="flex items-center justify-center font-bold sm:text-sm md:text-3xl lg:text-3xl"
       >
-        Sign in to view your business
+        Log in to view your business
       </Typography>
       <form className="mt-8 mb-2" onSubmit={handleSubmit}>
         <div className="mb-1 flex flex-col gap-6">
