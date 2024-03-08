@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { signIn, useSession } from "next-auth/react";
 import {
   Card,
   Input,
@@ -8,10 +9,18 @@ import {
   Button,
   Typography,
 } from "@material-tailwind/react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 export default function Login() {
   const router = useRouter();
+  const { data: session } = useSession();
+
+  useEffect(() => {
+    if (session && session?.user) {
+      router.push("/dashboard");
+    }
+  }, [router, session]);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -116,6 +125,28 @@ export default function Login() {
         >
           Sign Up
         </Typography>
+        <Typography
+          color="blue-gray"
+          className=" mt-4 flex items-center justify-center sm:text-sm md:text-3xl lg:text-3xl"
+        >
+          OR
+        </Typography>
+        <Button
+          onClick={async () => await signIn("google")}
+          size="lg"
+          variant="outlined"
+          color="blue-gray"
+          className="flex items-center gap-3 mt-5"
+        >
+          <Image
+            src="https://docs.material-tailwind.com/icons/google.svg"
+            alt="metamask"
+            className="h-5 w-5"
+            width="80"
+            height="80"
+          />
+          Continue with Google
+        </Button>
       </form>
     </Card>
   );

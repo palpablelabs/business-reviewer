@@ -7,6 +7,7 @@ import "./globals.css";
 import StickyNavBar from "../components/stickyNavBar";
 import { SimpleFooter } from "../components/footer";
 import PageContainerComponent from "../components/pageContainer";
+import { SessProvider } from "../components/sessionProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,7 +26,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <PageContainerComponent>
           <StickyNavBar />
-          {children}
+          <SessProvider>{children}</SessProvider>
           <SimpleFooter />
         </PageContainerComponent>
         <SpeedInsights />
