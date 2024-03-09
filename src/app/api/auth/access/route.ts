@@ -2,6 +2,8 @@ import jwt from "jsonwebtoken";
 import { headers } from "next/headers";
 
 export async function POST(request: Request) {
+  console.info("POST api/auth/access", process.env.NEXT_PUBLIC_BACKEND_URL);
+  console.info(process.env.GOOGLE_CLIENT_SECRET);
   try {
     const headersList = headers();
     const authorization = headersList.get("authorization");
