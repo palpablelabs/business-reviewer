@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   Input,
@@ -9,9 +9,18 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { useRouter } from "next/navigation";
+import { signIn, useSession } from "next-auth/react";
+import Image from "next/image";
 
 export default function Signup() {
   const router = useRouter();
+  const { data: session } = useSession();
+
+  useEffect(() => {
+    if (session && session?.user) {
+      router.push("/dashboard");
+    }
+  }, [router, session]);
 
   enum PasswordStrength {
     Weak = "Weak",
@@ -84,14 +93,38 @@ export default function Signup() {
   };
 
   return (
-    <Card color="transparent" shadow={false}>
+    <Card color="transparent" shadow={false} className="max-w-md">
       <Typography
         color="blue-gray"
-        className="flex items-center justify-center font-bold sm:text-sm md:text-3xl lg:text-3xl"
+        className="flex items-center justify-center mb-5 font-bold text-2xl"
       >
-        Create a free account to manage your digital business profile
+        Create a free account to manage your digital business profile.
       </Typography>
-      <form className="mt-8 mb-2" onSubmit={handleSubmit}>
+      <>
+        <Button
+          onClick={async () => await signIn("google")}
+          size="lg"
+          variant="outlined"
+          color="blue-gray"
+          className="flex items-center justify-center gap-3 mt-5"
+        >
+          <Image
+            src="https://docs.material-tailwind.com/icons/google.svg"
+            alt="metamask"
+            className="h-5 w-5"
+            width="80"
+            height="80"
+          />
+          Signup with Google
+        </Button>
+        <Typography
+          color="blue-gray"
+          className=" mt-4 flex items-center justify-center"
+        >
+          Or
+        </Typography>
+      </>
+      <form className="mt-5 mb-2" onSubmit={handleSubmit}>
         <div className="mb-1 flex flex-col gap-6">
           <Input
             label="First Name"
@@ -206,7 +239,7 @@ export default function Signup() {
           />
         </div>
 
-        <Button type="submit" className="mt-6" color="blue" fullWidth>
+        <Button type="submit" className="mt-6" color="black" fullWidth>
           sign up
         </Button>
 
@@ -218,7 +251,7 @@ export default function Signup() {
           color="blue"
           className="font-medium transition-colors hover:text-blue-700 flex items-center justify-center cursor-pointer"
         >
-          Log In
+          Sign In
         </Typography>
       </form>
     </Card>

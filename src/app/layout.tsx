@@ -24,11 +24,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <PageContainerComponent>
-          <StickyNavBar />
-          <SessProvider>{children}</SessProvider>
-          <SimpleFooter />
-        </PageContainerComponent>
+        <SessProvider>
+          <PageContainerComponent>
+            <StickyNavBar />
+            {children}
+            <SimpleFooter />
+          </PageContainerComponent>
+        </SessProvider>
         <SpeedInsights />
         <Analytics />
       </body>

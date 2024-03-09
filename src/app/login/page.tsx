@@ -55,14 +55,38 @@ export default function Login() {
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
   return (
-    <Card color="transparent" shadow={false}>
+    <Card color="transparent" shadow={false} className="max-w-md">
       <Typography
         color="blue-gray"
-        className="flex items-center justify-center font-bold sm:text-sm md:text-3xl lg:text-3xl"
+        className="flex items-center justify-center mb-5 font-bold text-2xl"
       >
-        Log in to view your business
+        Sign in to access and manage your business information.
       </Typography>
-      <form className="mt-8 mb-2" onSubmit={handleSubmit}>
+      <>
+        <Button
+          onClick={async () => await signIn("google")}
+          size="lg"
+          variant="outlined"
+          color="blue-gray"
+          className="flex items-center justify-center gap-3 mt-5"
+        >
+          <Image
+            src="https://docs.material-tailwind.com/icons/google.svg"
+            alt="metamask"
+            className="h-5 w-5"
+            width="80"
+            height="80"
+          />
+          Continue with Google
+        </Button>
+        <Typography
+          color="blue-gray"
+          className=" mt-4 flex items-center justify-center"
+        >
+          Or
+        </Typography>
+      </>
+      <form className="mt-5 mb-2" onSubmit={handleSubmit}>
         <div className="mb-1 flex flex-col gap-6">
           <Input
             label="Email Address"
@@ -111,7 +135,7 @@ export default function Login() {
           />
         </div>
 
-        <Button type="submit" className="mt-6" color="blue" fullWidth>
+        <Button type="submit" className="mt-6" color="black" fullWidth>
           log in
         </Button>
 
@@ -125,28 +149,6 @@ export default function Login() {
         >
           Sign Up
         </Typography>
-        <Typography
-          color="blue-gray"
-          className=" mt-4 flex items-center justify-center sm:text-sm md:text-3xl lg:text-3xl"
-        >
-          OR
-        </Typography>
-        <Button
-          onClick={async () => await signIn("google")}
-          size="lg"
-          variant="outlined"
-          color="blue-gray"
-          className="flex items-center gap-3 mt-5"
-        >
-          <Image
-            src="https://docs.material-tailwind.com/icons/google.svg"
-            alt="metamask"
-            className="h-5 w-5"
-            width="80"
-            height="80"
-          />
-          Continue with Google
-        </Button>
       </form>
     </Card>
   );

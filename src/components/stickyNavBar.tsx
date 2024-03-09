@@ -10,8 +10,10 @@ import {
 } from "@material-tailwind/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { signOut, useSession } from "next-auth/react";
 
 export default function StickyNavBar() {
+  const { data: session } = useSession();
   const router = useRouter();
   const [openNav, setOpenNav] = React.useState(false);
 
@@ -26,6 +28,13 @@ export default function StickyNavBar() {
     e.preventDefault();
     setOpenNav(false);
     router.push("/signup");
+  };
+
+  const handleSignout = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    await signOut({ callbackUrl: "/" });
+    setOpenNav(false);
+    router.push("/");
   };
 
   const handleLogin = (e: { preventDefault: () => void }) => {
@@ -51,32 +60,45 @@ export default function StickyNavBar() {
             src="/home/credibleCraft.png"
             alt="credibleCraft"
             className="object-contain"
-            width={80}
-            height={80}
+            width={70}
+            height={70}
           />
         </Typography>
 
-        <div className="flex items-center gap-4">
-          <Button
-            onClick={handleLogin}
-            variant="gradient"
-            size="sm"
-            className="hidden lg:inline-block"
-            color="blue"
-          >
-            <span>Log In</span>
-          </Button>
+        {(!session || !session?.user) && (
+          <div className="flex items-center gap-4">
+            <Button
+              onClick={handleLogin}
+              variant="gradient"
+              size="sm"
+              className="hidden lg:inline-block"
+              color="black"
+            >
+              <span>Log In</span>
+            </Button>
 
+            <Button
+              onClick={handleSignup}
+              variant="gradient"
+              size="sm"
+              className="hidden lg:inline-block"
+              color="black"
+            >
+              <span>Sign Up</span>
+            </Button>
+          </div>
+        )}
+        {session && session?.user && (
           <Button
-            onClick={handleSignup}
+            onClick={handleSignout}
             variant="gradient"
             size="sm"
             className="hidden lg:inline-block"
-            color="blue"
+            color="black"
           >
-            <span>Sign Up</span>
+            <span>Signout</span>
           </Button>
-        </div>
+        )}
         <IconButton
           variant="text"
           className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
@@ -116,29 +138,44 @@ export default function StickyNavBar() {
         </IconButton>
       </div>
       <Collapse open={openNav}>
-        <div className="flex items-center m-4 gap-4">
-          <Button
-            onClick={handleLogin}
-            fullWidth
-            variant="gradient"
-            size="sm"
-            className=""
-            color="blue"
-          >
-            <span>Log In</span>
-          </Button>
-
-          <Button
-            onClick={handleSignup}
-            fullWidth
-            variant="gradient"
-            size="sm"
-            className=""
-            color="blue"
-          >
-            <span>Sign Up</span>
-          </Button>
-        </div>
+        {session && session?.user && (
+          <div className="p-5">
+            <Button
+              onClick={handleSignout}
+              fullWidth
+              variant="gradient"
+              size="sm"
+              className=""
+              color="black"
+            >
+              <span>Signout</span>
+            </Button>
+          </div>
+        )}
+        {!session?.user && (
+          <div className="flex items-center justify-center mt-5 gap-5">
+            <Button
+              onClick={handleLogin}
+              fullWidth
+              variant="gradient"
+              size="sm"
+              className=""
+              color="black"
+            >
+              <span>Log In</span>
+            </Button>
+            <Button
+              onClick={handleSignup}
+              fullWidth
+              variant="gradient"
+              size="sm"
+              className=""
+              color="black"
+            >
+              <span>Sign up</span>
+            </Button>
+          </div>
+        )}
       </Collapse>
     </Navbar>
   );

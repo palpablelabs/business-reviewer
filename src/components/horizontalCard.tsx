@@ -86,7 +86,7 @@ const HorizontalCard: React.FC<HorizontalCardProps> = ({ image, content }) => {
               onClick={(e) => handleButtonClick(e, content.button.link)}
               className="w-1/8"
               fullWidth
-              color="blue"
+              color="black"
             >
               {content.button.text}
             </Button>
@@ -135,7 +135,7 @@ const HorizontalCard: React.FC<HorizontalCardProps> = ({ image, content }) => {
             <Button
               type="button"
               className="w-1/8"
-              color="blue"
+              color="black"
               fullWidth
               onClick={(e) => handleButtonClick(e, content.button.link)}
             >
