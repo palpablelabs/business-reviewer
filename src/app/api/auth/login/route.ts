@@ -30,6 +30,8 @@ export async function POST(request: Request) {
           process.env.JWT_SECRET as string
         );
 
+        console.log("api/auth/login :: payload ::", payload, authToken);
+
         await connectDatabase();
         const result = await insertDocument(
           process.env.MONGODB_USER_COLLECTION_NAME!,
@@ -41,7 +43,9 @@ export async function POST(request: Request) {
           } as any
         );
 
-        if (result.acknowledged) {
+        console.log("api/auth/login :: result ::", result);
+
+        if (result) {
           return Response.json({ authToken }, { status: 200 });
         } else {
           return Response.json({ data: "Unauthorised" }, { status: 401 });
@@ -50,7 +54,7 @@ export async function POST(request: Request) {
     }
     return Response.json({ data: "Unauthorised" }, { status: 401 });
   } catch (error) {
-    console.error("error ::", error);
+    console.error("error api/auth/login ::", error);
     return Response.json({ data: "Unauthorised" }, { status: 401 });
   }
 }

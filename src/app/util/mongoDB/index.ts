@@ -50,11 +50,21 @@ export function getCollection<T extends Document>(collectionName: string) {
 export async function insertDocument<T extends Document>(
   collectionName: string,
   document: OptionalId<T>
-): Promise<InsertOneResult<T>> {
-  const collection = getCollection<T>(collectionName);
-  const options: { bypassDocumentValidation?: boolean } = {};
-  if ("_id" in document && document._id === undefined) {
-    options.bypassDocumentValidation = true;
+): Promise<InsertOneResult<T> | boolean> {
+  try {
+    const collection = getCollection<T>(collectionName);
+    const options: { bypassDocumentValidation?: boolean } = {};
+    if ("_id" in document && document._id === undefined) {
+      options.bypassDocumentValidation = true;
+    }
+    const insertedData = await collection.insertOne(document as any, options);
+    console.log("insertDocument ::", insertedData);
+    return insertedData;
+  } catch (error) {
+    console.error("insertDocument error ::", error, (error as any).code);
+    if ((error as any).code === 11000) {
+      return Promise.resolve(true);
+    }
+    return Promise.resolve(false);
   }
-  return collection.insertOne(document as any, options);
 }

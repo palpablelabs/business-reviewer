@@ -20,7 +20,7 @@ const handler = NextAuth({
   ],
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
-    async jwt({ token, account, user }) {
+    async jwt({ token, account }) {
       if (account) {
         console.log("callback jwt account::", account);
         try {
@@ -34,6 +34,7 @@ const handler = NextAuth({
             }
           );
           const resParsed = await res.json();
+          console.log("callback jwt resParsed::", resParsed);
           token = Object.assign({}, token, {
             id_token: account.id_token,
           });
@@ -41,11 +42,11 @@ const handler = NextAuth({
             myToken: resParsed.authToken,
           });
           console.log("callback jwt token::", token);
+          return token;
         } catch (error) {
           console.log("callback jwt Err ::", error);
         }
       }
-
       return token;
     },
     async session({ session, token }) {

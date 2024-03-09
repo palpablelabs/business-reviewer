@@ -7,6 +7,7 @@ import {
   Button,
   IconButton,
   Collapse,
+  Avatar,
 } from "@material-tailwind/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -56,13 +57,23 @@ export default function StickyNavBar() {
           onClick={handleHome}
           className="mr-4 cursor-pointer py-1.5 font-medium"
         >
-          <Image
-            src="/home/credibleCraft.png"
-            alt="credibleCraft"
-            className="object-contain"
-            width={70}
-            height={70}
-          />
+          {(!session || !session.user) && (
+            <Image
+              src="/home/credibleCraft.png"
+              alt="credibleCraft"
+              className="object-contain"
+              width={70}
+              height={70}
+            />
+          )}
+          {session && session?.user && (
+            <Avatar
+              size="lg"
+              variant="circular"
+              src={session?.user?.image!}
+              alt={session?.user?.name!}
+            />
+          )}
         </Typography>
 
         {(!session || !session?.user) && (
